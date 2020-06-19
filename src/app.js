@@ -33,17 +33,15 @@ app.post("/repositories", (request, response) => {
 });
 
 app.put("/repositories/:id", validateId, (request, response) => {
-  const { id } = request.params;
+  const { id } = request.params; 
   const { title, url, techs } = request.body;
 
+  const rep = {title,url,techs};
   const repository = repositories.find((repository) => repository.id === id);
 
-  repository.title = title;
-  repository.url = url;
-  repository.techs = techs;
+  repository = rep;
 
   return response.json(repository);
-
 });
 
 app.delete("/repositories/:id", validateId, (request, response) => {
